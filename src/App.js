@@ -1,4 +1,4 @@
-import {AppBar, Button, Card, CardContent, CardHeader, Container, Grid, makeStyles, TextField, Toolbar, Typography} from '@material-ui/core';
+import {AppBar, Button, Card, CardContent, CardHeader, Container, Grid, makeStyles, TextField, Toolbar, Typography} from '../../pwa-weather/node_modules/@material-ui/core';
 import React, {useState} from 'react';
 import {fetchWeather} from './api/fetchWeather';
 import './App.css';
@@ -26,7 +26,6 @@ export default () => {
     setWeather(data);
     setQuery('');
   };
-
   return (
     <div>
       <AppBar position={'static'}>
