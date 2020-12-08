@@ -5,13 +5,18 @@ import './App.css';
 
 const useStyles = makeStyles((theme) => ({
   search: {
-    margin: theme.spacing(2),
+    
+    marginTop: theme.spacing(2),
   },
   button: {
-    margin: theme.spacing(1),
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+    },
+    marginLeft: '0px',
+    marginTop: theme.spacing(1),
   },
   card: {
-    width: 400,
+    marginTop: theme.spacing(4),
   },
 }));
 
@@ -41,7 +46,7 @@ export const App = () => {
       <main>
         <Container maxWidth={'md'}>
           <Grid container={true} className={classes.search} alignContent={'center'}>
-            <Grid item={true} xs={9}>
+            <Grid item={true} xs={12} sm={8}>
               <TextField 
                 id={'city'}
                 label={'Location(City)'}
@@ -52,12 +57,12 @@ export const App = () => {
                 onKeyPress={(e) => e.key === 'Enter' && search()}
               />
             </Grid>
-            <Grid item={true} xs={2}>
-              <Button className={classes.button} variant={'contained'} color={'primary'} onClick={search}>Submit</Button> 
+            <Grid item={true} xs={12} sm={3}>
+              <Button fullWidth={true} className={classes.button} variant={'contained'} color={'primary'} onClick={search}>Submit</Button> 
             </Grid>
           </Grid>
           {weather.main && (
-            <Grid container={true} justify={'center'}>
+            <Container fixed={true} maxWidth={400}>
               <Card className={classes.card}>
                 <CardHeader title={weather.name}/>
                 <CardContent >
@@ -67,7 +72,7 @@ export const App = () => {
                   <Typography variant={'subtitle2'}>{weather.weather[0].description.toUpperCase()}</Typography>
                 </CardContent>
               </Card>
-            </Grid>
+            </Container>
           )}
         </Container>
         <Snackbar
